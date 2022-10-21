@@ -17,4 +17,10 @@ Pod::Spec.new do |s|
 
   s.dependency "React-Core"
   s.dependency "GoogleMLKit/BarcodeScanning"
+  if defined?($VCCSAsStaticFramework)
+    Pod::UI.puts "#{s.name}: Using overridden static_framework value of '#{$VCCSAsStaticFramework}'"
+    s.static_framework = $VCCSAsStaticFramework
+  else
+    s.static_framework = false
+  end
 end
